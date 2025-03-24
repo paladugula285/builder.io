@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react
 import "./styles.css";
 import Footer from "./Footer";
 import AuthForm from "./AuthForm";
+import jcrewImg from "./assets/jcrew.jpeg";
 export default function BuilderIOClone() {
   return (
     <Router>
@@ -277,7 +278,7 @@ function AppContent() {
         <div className="scrolling-brands">
           <div className="brands">
             {[
-              { src: "src/assets/jcrew.jpeg", alt: "JCREW", label: "JCREW" },
+              { src: jcrewImg, alt: "JCREW", label: "JCREW" },
               { src: "src/assets/harrys.png", alt: "Harry's", label: "Harry's" },
               { src: "src/assets/experian.png", alt: "Experian", label: "Experian" },
               { src: "src/assets/faire.png", alt: "Faire", label: "Faire" },
@@ -364,14 +365,5 @@ function AppContent() {
         </section>
       <Footer />
     </div>
-  );
-}
-
-function ContentPage({ title }) {
-  return (
-    <section className="matched-content">
-      <h2>{title}</h2>
-      <p>This is the content for {title}.</p>
-    </section>
   );
 }
