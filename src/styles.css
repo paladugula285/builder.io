@@ -268,7 +268,7 @@ a, button, .btn, .dropdown-column a, .newsletter-form button {
 .brands {
     display: flex;
     white-space: nowrap;
-    animation: scroll 20s linear infinite;
+    animation: scroll 10s linear infinite;
 }
 @keyframes scroll {
     from {

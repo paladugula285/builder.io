@@ -3,7 +3,23 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react
 import "./styles.css";
 import Footer from "./Footer";
 import AuthForm from "./AuthForm";
+import PlatForm from "./assets/platform.mp4"
+import Guide from "./assets/guide.mp4"
+import Webinar from "./assets/webinar.webp"
+import Redeem from "./assets/redeem.mp4"
+import Customer from "./assets/customer.webp"
+import Explainer from "./assets/explainer.webp" 
 import jcrewImg from "./assets/jcrew.jpeg";
+import Web from "./assets/web.webp"
+import harrysImg from "./assets/harrys.png";
+import experianImg from "./assets/experian.png";
+import faireImg from "./assets/faire.png";
+import vistaprintImg from "./assets/vistaprint.png";
+import aloyogaImg from "./assets/aloyoga.png";
+import afterpayImg from "./assets/afterpay.png";
+import fableticsImg from "./assets/fabletics.png";
+import vimeoImg from "./assets/vimeo.png";
+import nutsImg from "./assets/nuts.png";
 export default function BuilderIOClone() {
   return (
     <Router>
@@ -269,25 +285,25 @@ function AppContent() {
       <section className="video-section">
         <video
           className="promo-video"
-          src="src/assets/platform.mp4"
+          src={PlatForm}
           autoPlay
-          loop
           muted
+          loop
           controls
         ></video>
         <div className="scrolling-brands">
           <div className="brands">
             {[
               { src: jcrewImg, alt: "JCREW", label: "JCREW" },
-              { src: "src/assets/harrys.png", alt: "Harry's", label: "Harry's" },
-              { src: "src/assets/experian.png", alt: "Experian", label: "Experian" },
-              { src: "src/assets/faire.png", alt: "Faire", label: "Faire" },
-              { src: "src/assets/vistaprint.png", alt: "Vistaprint", label: "Vistaprint" },
-              { src: "src/assets/aloyoga.png", alt: "Aloyoga", label: "Aloyoga" },
-              { src: "src/assets/afterpay.png", alt: "Afterpay", label: "Afterpay" },
-              { src: "src/assets/fabletics.png", alt: "Fabletics", label: "Fabletics" },
-              { src: "src/assets/vimeo.png", alt: "Vimeo", label: "Vimeo" },
-              { src: "src/assets/nuts.png", alt: "Nuts.com", label: "Nuts.com" },
+              { src: harrysImg, alt: "Harry's", label: "Harry's" },
+              { src: experianImg, alt: "Experian", label: "Experian" },
+              { src: faireImg, alt: "Faire", label: "Faire" },
+              { src: vistaprintImg, alt: "Vistaprint", label: "Vistaprint" },
+              { src: aloyogaImg, alt: "Aloyoga", label: "Aloyoga" },
+              { src: afterpayImg, alt: "Afterpay", label: "Afterpay" },
+              { src: fableticsImg, alt: "Fabletics", label: "Fabletics" },
+              { src: vimeoImg, alt: "Vimeo", label: "Vimeo" },
+              { src: nutsImg, alt: "Nuts.com", label: "Nuts.com" },
             ].map((brand, index) => (
               <div key={index} className="brand">
                 <img src={brand.src} alt={brand.alt} />
@@ -304,10 +320,10 @@ function AppContent() {
   <div className="video-container">
     <video
       className="feature-video"
-      src="src/assets/guide.mp4"
+      src={Guide}
       autoPlay
-      loop
       muted
+      loop
       controls
     ></video>
   </div>
@@ -317,22 +333,22 @@ function AppContent() {
   <h2>Why Choose Builder.io?</h2>
   <div className="cards-container">
     <div className="card">
-      <img src="src/assets/webinar.webp" alt="Visual Editing" />
+      <img src={Webinar} alt="Visual Editing" />
       <h3>Visual Editing</h3>
       <p>Drag and drop to create stunning web pages without coding.</p>
     </div>
     <div className="card">
-      <img src="src/assets/web.webp" alt="Performance Optimization" />
+      <img src={Web} alt="Performance Optimization" />
       <h3>Performance Optimization</h3>
       <p>Boost site speed with AI-powered optimizations.</p>
     </div>
     <div className="card">
-      <img src="src/assets/customer.webp" alt="Seamless Integrations" />
+      <img src={Customer} alt="Seamless Integrations" />
       <h3>Seamless Integrations</h3>
       <p>Works with your favorite frameworks and tools.</p>
     </div>
     <div className="card">
-      <img src="src/assets/explainer.webp" alt="AI-Powered Insights" />
+      <img src={Explainer} alt="AI-Powered Insights" />
       <h3>AI-Powered Insights</h3>
       <p>Leverage AI for smarter content personalization.</p>
     </div>
@@ -341,7 +357,7 @@ function AppContent() {
 <div className="video-container">
     <video
       className="feature-video"
-      src="src/assets/redeem.mp4"
+      src={Redeem}
       autoPlay
       loop
       muted
