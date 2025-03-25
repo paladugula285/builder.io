@@ -31,12 +31,9 @@ export default function BuilderIOClone() {
 function AppContent() {
   const [showForm, setShowForm] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const [dropdownStates, setDropdownStates] = useState({
-    platform: false,
-    solutions: false,
-    developers: false,
-    resources: false,
-  });
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dropdownStates, setDropdownStates] = useState({});
 
   const toggleDropdown = (key) => (isOpen) => {
     setDropdownStates((prev) => ({ ...prev, [key]: isOpen }));
@@ -47,10 +44,6 @@ function AppContent() {
       key: "platform",
       label: "Platform",
       columns: [
-        {
-          title: "Visual Development",
-          links: [{ text: "Platform Overview", href: "/overview" }],
-        },
         {
           title: "Develop",
           links: [
@@ -95,7 +88,6 @@ function AppContent() {
             { text: "Salesforce", href: "/salesforce" },
             { text: "Figma", href: "/figma" },
             { text: "Algolia", href: "/algolia" },
-            { text: "Phrase", href: "/phrase" },
           ],
         },
       ],
@@ -104,14 +96,6 @@ function AppContent() {
       key: "developers",
       label: "Developers",
       columns: [
-        {
-          title: "Overview",
-          links: [
-            { text: "Documentation", href: "/documentation" },
-            { text: "Devtools", href: "/devtools" },
-            { text: "Builder Blueprints", href: "/blueprints" },
-          ],
-        },
         {
           title: "Frameworks",
           links: [
@@ -136,13 +120,6 @@ function AppContent() {
             { text: "Partytown", href: "/partytown" },
           ],
         },
-        {
-          title: "Explore",
-          links: [
-            { text: "Best of Web", href: "/bestoftheweb" },
-            { text: "Performance Insights", href: "/performance" },
-          ],
-        },
       ],
     },
     {
@@ -162,20 +139,12 @@ function AppContent() {
           ],
         },
         {
-          title: "Customers",
-          links: [
-            { text: "Success Stories", href: "/success" },
-            { text: "Showcase", href: "/showcase" },
-          ],
-        },
-        {
           title: "Resource Center",
           links: [
             { text: "Product Demos", href: "/demos" },
             { text: "Guides", href: "/guides" },
             { text: "Webinars", href: "/webinars" },
             { text: "Explainers", href: "/explainers" },
-            { text: "See All", href: "/seeall" },
           ],
         },
       ],
@@ -186,36 +155,34 @@ function AppContent() {
   return (
     <div style={{ backgroundColor: "black" }}>
       <nav className="navbar">
-        <img
-          style={{ width: "50px", height: "50px" }}
-          src="src/assets/image.jpg"
-          alt="Logo"
-        />
-        <h1 style={{ color: "white" }}>Builder.io</h1>
-        <ul>
+        <div className="navbar-header">
+          
+          <button
+            className="menu-btn"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            ☰
+          </button>
+          <h1 className="brand-title">Builder.io</h1>
+        </div>
+
+        <ul className={`nav-links ${isDropdownOpen ? "open" : ""}`}>
           {dropdowns.map((dropdown) => (
             <li
-              key={dropdown.key}
-              className="dropdown-wrapper"
-              onMouseEnter={() => toggleDropdown(dropdown.key)(true)}
-              onMouseLeave={() => toggleDropdown(dropdown.key)(false)}
-            >
+            key={dropdown.key}
+            className="dropdown-wrapper"
+            onClick={() => toggleDropdown(dropdown.key)(!dropdownStates[dropdown.key])}
+          >          
               <Link to={`#${dropdown.key}`} className="dropdown-toggle">
-                {dropdown.label}{" "}
+                {dropdown.label}
                 <span
-                  className={`arrow ${
-                    dropdownStates[dropdown.key] ? "rotate" : ""
-                  }`}
+                  className={`arrow ${dropdownStates[dropdown.key] ? "rotate" : ""}`}
                 >
                   &#9662;
                 </span>
               </Link>
               {dropdownStates[dropdown.key] && (
-                <div
-                  className="dropdown-menu"
-                  onMouseEnter={() => toggleDropdown(dropdown.key)(true)}
-                  onMouseLeave={() => toggleDropdown(dropdown.key)(false)}
-                >
+                <div className="dropdown-menu">
                   {dropdown.columns.map((column, index) => (
                     <div key={index} className="dropdown-column">
                       <h4>{column.title}</h4>
@@ -232,42 +199,39 @@ function AppContent() {
           ))}
         </ul>
         <div className="app-container">
-      <div className="btn-group">
-        <button 
-          className="btn btn-sales" 
-          onClick={() => { setShowForm(true); setIsLogin(true); }}
-        >
-          Log In
-        </button>
-        <button 
-          className="btn btn-sales" 
-          onClick={() => { setShowForm(true); setIsLogin(false); }}
-        >
-          Sign Up
-        </button>
-        <button 
-          className="btn btn-app" 
-          onClick={() => setShowForm(false)}
-        >
-          Go to App
-        </button>
-      </div>
-
-      {showForm && (
-        <div className="overlay">
-          <div className="modal">
-            <AuthForm 
-              isLogin={isLogin} 
-              setIsLogin={setIsLogin} 
-              closeForm={() => setShowForm(false)} 
-            />
-          </div>
+        <div className="btn-group">
+          <button 
+            className="btn btn-sales" 
+            onClick={() => { setShowForm(true); setIsLogin(true); }}
+          >
+            Log In
+          </button>
+          <button 
+            className="btn btn-sales" 
+            onClick={() => { setShowForm(true); setIsLogin(false); }}
+          >
+            Sign Up
+          </button>
+          <button 
+            className="btn btn-app" 
+            onClick={() => setShowForm(false)}
+          >
+            Go to App
+          </button>
         </div>
-      )}
-    </div>
-    
-      </nav>
-
+        {showForm && (
+          <div className="overlay">
+            <div className="modal">
+              <AuthForm 
+                isLogin={isLogin} 
+                setIsLogin={setIsLogin} 
+                closeForm={() => setShowForm(false)} 
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
       <section className="hero">
         <h2>Build & Optimize Fast</h2>
         <p>A headless CMS with a powerful visual editor.</p>

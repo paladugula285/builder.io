@@ -1,115 +1,83 @@
 import React from "react";
-import '../src/Footer.css'
+import "../src/Footer.css";
+
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-section">
-        <div className="footer-column">
-          <h4 className="heading">Product</h4>
-          <ul>
-            <li>Platform Overview</li>
-            <li>Integrations</li>
-            <li>What's New</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Capabilities</h4>
-          <ul>
-            <li>Design to Code</li>
-            <li>Visual Editor</li>
-            <li>Headless CMS</li>
-            <li>A/B & Personalization</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Company</h4>
-          <ul>
-            <li>About</li>
-            <li>Careers</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Developers</h4>
-          <ul>
-            <li>Documentation</li>
-            <li>Devtools</li>
-            <li>Builder Blueprints</li>
-            <li>Best of Web</li>
-            <li>Performance Insights</li>
-            <li>Open Source</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Builder</h4>
-          <ul>
-            <li>Mitosis</li>
-            <li>AI Shell</li>
-            <li>Micro Agent</li>
-            <li>GPT Crawler</li>
-            <li>Qwik</li>
-            <li>Partytown</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Solutions</h4>
-          <ul>
-            <li>Headless Commerce</li>
-            <li>Marketing Sites</li>
-            <li>Landing Pages</li>
-            <li>Mobile Apps</li>
-            <li>Multi-brand</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Popular Guides</h4>
-          <ul>
-            <li>Figma to Code Guide</li>
-            <li>Composable Commerce Guide</li>
-            <li>Headless CMS Guide</li>
-            <li>Headless Commerce Guide</li>
-            <li>Composable DXP Guide</li>
-            <li>Design to Code</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Resources</h4>
-          <ul>
-            <li>Blog</li>
-            <li>Knowledge Base</li>
-            <li>Community Forum</li>
-            <li>Partners</li>
-            <li>Templates</li>
-            <li>Success Stories</li>
-            <li>Showcase</li>
-            <li>Resource Center</li>
-            <li>Glossary</li>
-            <li>Page Builder</li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h4 className="heading">Frameworks</h4>
-          <ul>
-            <li>React</li>
-            <li>Next.js</li>
-            <li>Qwik</li>
-            <li>Gatsby</li>
-            <li>Angular</li>
-            <li>Vue</li>
-            <li>Svelte</li>
-            <li>Remix</li>
-            <li>Nuxt</li>
-            <li>Astro</li>
-            <li>See All</li>
-          </ul>
-        </div>
+        {[
+          {
+            title: "Product",
+            items: ["Platform Overview", "Integrations", "What's New"],
+          },
+          {
+            title: "Capabilities",
+            items: [
+              "Design to Code",
+              "Visual Editor",
+              "Headless CMS",
+              "A/B & Personalization",
+            ],
+          },
+          {
+            title: "Company",
+            items: ["About", "Careers"],
+          },
+          {
+            title: "Developers",
+            items: [
+              "Documentation",
+              "Devtools",
+              "Builder Blueprints",
+              "Best of Web",
+              "Performance Insights",
+              "Open Source",
+            ],
+          },
+          {
+            title: "Builder",
+            items: ["Mitosis", "AI Shell", "Micro Agent", "GPT Crawler", "Qwik", "Partytown"],
+          },
+          {
+            title: "Solutions",
+            items: ["Headless Commerce", "Marketing Sites", "Landing Pages", "Mobile Apps", "Multi-brand"],
+          },
+          {
+            title: "Popular Guides",
+            items: [
+              "Figma to Code Guide",
+              "Composable Commerce Guide",
+              "Headless CMS Guide",
+              "Headless Commerce Guide",
+              "Composable DXP Guide",
+              "Design to Code",
+            ],
+          },
+          {
+            title: "Resources",
+            items: [
+              "Blog",
+              "Knowledge Base",
+              "Community Forum",
+              "Partners",
+              "Templates",
+              "Success Stories",
+              "Showcase",
+              "Resource Center",
+              "Glossary",
+              "Page Builder",
+            ],
+          },
+        ].map((section, index) => (
+          <div key={index} className="footer-column">
+            <h4 className="heading">{section.title}</h4>
+            <ul>
+              {section.items.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
 
       <div className="footer-bottom">

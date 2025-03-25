@@ -6,6 +6,10 @@ body {
     margin: 0;
     padding: 0;
 }
+.logo{
+    width: 50px;
+    height: 50px;
+}
 a, button, .btn, .dropdown-column a, .newsletter-form button {
     transition: all 0.3s ease-in-out;
 }
@@ -79,7 +83,8 @@ a, button, .btn, .dropdown-column a, .newsletter-form button {
     padding: 0px 150px;
     border-radius: 8px;
     width: 78%;
-    height: 50%;
+    padding-bottom: 20px;
+    /* height: 50%; */
     margin-top: 10px;
     z-index: 10;
     opacity: 0;
@@ -347,10 +352,73 @@ a, button, .btn, .dropdown-column a, .newsletter-form button {
 .privacy-policy a:hover {
     text-decoration: underline;
 }
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: black;
+      padding: 10px 0;
+    }
+  
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .dropdown-menu {
+      flex-direction: column; /* Stack dropdown items */
+      width: 100%;
+    }
+  }
+  
+  /* Desktop: Hide Menu Button */
+  @media (min-width: 769px) {
+    .menu-btn {
+      display: none;
+    }
+  }
+  
 @media (max-width: 768px) {
     .navbar ul {
+        display: none;
         flex-direction: column;
-        gap: 0.5rem;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: black;
+        padding: 10px 0;
+    }
+    
+    .navbar ul.open {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .dropdown-menu {
+        flex-direction: column; /* Stack dropdown items */
+        width: 100%;
     }
     .dropdown-menu {
         width: 100%;
